@@ -1,0 +1,11 @@
+Order (orderId, userId, orderStatus, arrivingLocation, isPayed, List<Products>, createdAt)
+OrderStatus (REGISTERED, ASSIGNED, PACKED, ON_THE_WAY, WAITING_FOR_USER, DELIVERED)
+DistributionPoint (id, address,
+     where we can get the ordered commodity (contains the country, the city/town, street and e.t.c.),
+     working hours,
+     is distribution point active,
+     amount of delivered orders to this distribution point,
+     the phone by which we can call the manager of this distribution point)
+User (userId, userStatus, isActiveBuyer, allOrders, registeredDate (created_at), address, bankAccountInfo)
+Product (type (заменил на name_product, тк в pg type в резерве), historyOfPrices, isAvailable, description, images, feedBacksOfUsers)
+
