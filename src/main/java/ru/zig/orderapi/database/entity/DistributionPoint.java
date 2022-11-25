@@ -8,5 +8,7 @@ package ru.zig.orderapi.database.entity;
  *      amount of delivered orders to this distribution point,
  *      the phone by which we can call the manager of this distribution point)
  */
+//TODO допилить
 public class DistributionPoint {
 }
+
