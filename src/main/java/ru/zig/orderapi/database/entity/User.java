@@ -1,9 +1,10 @@
-package ru.zig.orderapi.database.Entity;
+package ru.zig.orderapi.database.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.zig.orderapi.database.entity.enums.UserStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,4 +37,6 @@ public class User extends AuditingEntity<Long> {
 
     @OneToMany(mappedBy = "user")
     private List<Feedback> allFeedback = new ArrayList<>();
+
+    private BankAccountInfo bankAccountInfo;
 }

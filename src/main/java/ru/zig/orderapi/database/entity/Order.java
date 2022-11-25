@@ -1,9 +1,10 @@
-package ru.zig.orderapi.database.Entity;
+package ru.zig.orderapi.database.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.zig.orderapi.database.entity.enums.OrderStatus;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+//TODO настроить аудит энверс
 public class Order extends AuditingEntity<Long> {
 
     @Id

@@ -1,4 +1,4 @@
-package ru.zig.orderapi.database.Entity;
+package ru.zig.orderapi.database.entity;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;

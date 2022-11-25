@@ -1,4 +1,4 @@
-package ru.zig.orderapi.database.Entity;
+package ru.zig.orderapi.database.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+//TODO настроить аудит энверс
 public class Product extends AuditingEntity<Long> {
 
     @Id
