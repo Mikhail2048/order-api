@@ -14,7 +14,7 @@ public class OrderCreatEditDto {
 
     String arrivingLocation;
 
-    ProductReadDto product;
+    ProductReadBaseDto product;
 }
 
 
