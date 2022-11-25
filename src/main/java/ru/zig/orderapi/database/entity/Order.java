@@ -21,21 +21,25 @@ public class Order extends AuditingEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pk_oders_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "pk_users_id")
     private User userId;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "order_status")
     private OrderStatus orderStatus;
 
+    @Column(name = "arriving_location")
     private String arrivingLocation;
 
+    @Column(name = "is_payed")
     private boolean isPayed;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "pk_product_id")
     private List<Product> productsInOrder;
 
 }

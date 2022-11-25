@@ -14,15 +14,17 @@ public class Feedback extends AuditingEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pk_feedback_id")
     private Long id;
 
+    @Column(name = "text_of_feedback")
     private String textOfFeedback;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "pk_users_id")
+    private User userId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @JoinColumn(name = "pk_product_id")
+    private Product productId;
 }

@@ -1,9 +1,9 @@
-db:
-    username: ${username.value:postgres}
-    password: odae4Qu
-    driver: PostgresDriver
-    url: postgres:5432
-    hosts: localhost,127.0.0.1
+#db:
+#    username: ${username.value:postgres}
+#    password: odae4Qu
+#    driver: PostgresDriver
+#    url: postgres:5432
+#    hosts: localhost,127.0.0.1
 
 spring:
     datasource:

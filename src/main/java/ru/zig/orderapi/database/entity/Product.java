@@ -20,19 +20,24 @@ public class Product extends AuditingEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pk_product_id")
     private Long id;
 
     //TODO за место historyOfPrice сделал price. Уточнить корректно ли это при условии,
     // что для записи истории цен буду использовать Hibernate Envers
+    @Column(name = "price")
     private Long price;
 
+    @Column(name = "is_available")
     private boolean isAvailable;
 
+    @Column(name = "description")
     private String description;
 
     //TODO Уточнить корректно ли будет не хранить картинку в БД, а просто ссылку к нему
-    private String urlToImages;
+    @Column(name = "images")
+    private String urlToImage;
 
-    @OneToMany(mappedBy = "product")
-    private List<Feedback> feedBacksOfUsers;
+    @OneToMany(mappedBy = "productId")
+    private List<Feedback> allFeedbacksOfUser;
 }

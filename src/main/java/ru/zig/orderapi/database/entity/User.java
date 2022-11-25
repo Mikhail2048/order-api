@@ -25,18 +25,27 @@ public class User extends AuditingEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pk_users_id")
     private Long id;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "user_status")
     private UserStatus userStatus;
 
+    @Column(name = "is_active_buyer")
     private boolean isActiveBuyer;
 
     @OneToMany(mappedBy = "userId")
     private List<Order> allOrders = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "userId")
     private List<Feedback> allFeedback = new ArrayList<>();
 
+    @Column(name = "address")
+    private String address;
+
+    @Embedded
+    @AttributeOverride(name = "bankcardNumber", column = @Column(name = "bankcard_number"))
+    @AttributeOverride(name = "balanceBankcard", column = @Column(name = "balance_bankcard"))
     private BankAccountInfo bankAccountInfo;
 }
