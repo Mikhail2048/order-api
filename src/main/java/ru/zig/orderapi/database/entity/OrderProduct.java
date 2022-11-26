@@ -7,24 +7,25 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
-@Table(name = "feedback")
-//TODO настроить аудит энверс
-public class Feedback extends AuditingEntity<Long> {
+@Table(name = "orders_product")
+public class OrderProduct implements BaseEntity<Long>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
-    @Column(name = "text_of_feedback")
-    private String textOfFeedback;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "users_id")
-    private User userId;
+    @JoinColumn(name = "orders_id")
+    private Order order;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
-    private Product productId;
+    private Product product;
+
+    public void setOrder(Order order) {
+        this.order = order;
+//        this.order.get
+    }
 }

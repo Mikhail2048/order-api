@@ -25,7 +25,7 @@ public class User extends AuditingEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pk_users_id")
+    @Column(name = "id")
     private Long id;
 
     @Enumerated(EnumType.STRING)
@@ -35,12 +35,6 @@ public class User extends AuditingEntity<Long> {
     @Column(name = "is_active_buyer")
     private boolean isActiveBuyer;
 
-    @OneToMany(mappedBy = "userId")
-    private List<Order> allOrders = new ArrayList<>();
-
-    @OneToMany(mappedBy = "userId")
-    private List<Feedback> allFeedback = new ArrayList<>();
-
     @Column(name = "address")
     private String address;
 
@@ -48,4 +42,5 @@ public class User extends AuditingEntity<Long> {
     @AttributeOverride(name = "bankcardNumber", column = @Column(name = "bankcard_number"))
     @AttributeOverride(name = "balanceBankcard", column = @Column(name = "balance_bankcard"))
     private BankAccountInfo bankAccountInfo;
+
 }

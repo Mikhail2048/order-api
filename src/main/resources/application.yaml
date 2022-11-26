@@ -7,7 +7,7 @@
 
 logging:
     level:
-        root: DEBUG
+#        root: DEBUG
         org:
 #            springframework:
 #                session:
@@ -33,3 +33,5 @@ spring:
         properties:
             hibernate:
                 format_sql: true
+#        properties.hibernate:
+#            hbm2ddl.auto: validate

@@ -1,9 +1,7 @@
 package ru.zig.orderapi.database.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -11,7 +9,8 @@ import java.util.List;
  * Product (type, historyOfPrices, isAvailable, description, images, feedBacksOfUsers)
  */
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -20,7 +19,7 @@ public class Product extends AuditingEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pk_product_id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name_product")
@@ -41,6 +40,4 @@ public class Product extends AuditingEntity<Long> {
     @Column(name = "images")
     private String urlToImage;
 
-    @OneToMany(mappedBy = "productId")
-    private List<Feedback> allFeedbacksOfUser;
 }
