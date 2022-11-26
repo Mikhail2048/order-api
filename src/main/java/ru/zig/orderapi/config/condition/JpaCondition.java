@@ -6,7 +6,6 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 
 public class JpaCondition implements Condition {
 
-
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
         try {
