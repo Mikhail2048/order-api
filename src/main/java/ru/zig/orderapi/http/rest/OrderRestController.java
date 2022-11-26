@@ -1,15 +1,12 @@
 package ru.zig.orderapi.http.rest;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import ru.zig.orderapi.dto.OrderCreateEditDto;
 import ru.zig.orderapi.service.OrderService;
-
-import java.util.Optional;
 
 import static org.springframework.http.ResponseEntity.noContent;
 import static org.springframework.http.ResponseEntity.notFound;
@@ -21,16 +18,11 @@ public class OrderRestController {
 
     private final OrderService orderService;
 
-    @Transactional
-    public UserReadDto create(UserCreateEditDto userDto) {
-        return Optional.of(userDto)
-                .map(dto -> {
-                    uploadImage(dto.getImage());
-                    return userCreateEditMapper.map(dto);
-                })
-                .map(userRepository::save)
-                .map(userReadMapper::map)
-                .orElseThrow();
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public Long create(@RequestBody OrderCreateEditDto user) {
+        return orderService.create(user);
     }
 
     // cancel - cancelling order by orderId, the body is orderId

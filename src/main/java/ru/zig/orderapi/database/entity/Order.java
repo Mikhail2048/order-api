@@ -1,9 +1,7 @@
 package ru.zig.orderapi.database.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ru.zig.orderapi.database.entity.enums.OrderStatus;
 
 import java.util.List;
@@ -12,20 +10,22 @@ import java.util.List;
  * Order (orderId, userId, orderStatus, arrivingLocation, isPayed, List<Product>, createdAt)
  */
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "orders")
 //TODO настроить аудит энверс
 public class Order extends AuditingEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pk_oders_id")
+    @Column(name = "pk_orders_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pk_users_id")
+    @JoinColumn(name = "fk_users_id")
     private User userId;
 
     @Enumerated(EnumType.STRING)
@@ -40,6 +40,6 @@ public class Order extends AuditingEntity<Long> {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "pk_product_id")
-    private List<Product> productsInOrder;
+    private List<Product> products;
 
 }

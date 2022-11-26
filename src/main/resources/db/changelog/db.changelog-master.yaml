@@ -1,4 +1,4 @@
-databaseChangelog:
+databaseChangeLog:
   - include:
       file: db/changelog/db.changelog-1.0.sql
   - include:

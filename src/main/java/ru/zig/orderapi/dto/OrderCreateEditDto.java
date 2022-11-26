@@ -4,9 +4,11 @@ import lombok.Value;
 import lombok.experimental.FieldNameConstants;
 import ru.zig.orderapi.database.entity.enums.OrderStatus;
 
+import java.util.Set;
+
 @Value
 @FieldNameConstants
-public class OrderCreatEditDto {
+public class OrderCreateEditDto {
 
     Long userId;
 
@@ -14,7 +16,7 @@ public class OrderCreatEditDto {
 
     String arrivingLocation;
 
-    ProductReadBaseDto product;
+    Set<Long> products;
 }
 
 
