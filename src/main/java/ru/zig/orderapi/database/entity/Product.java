@@ -3,6 +3,7 @@ package ru.zig.orderapi.database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +14,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 //TODO настроить аудит энверс
 public class Product extends AuditingEntity<Long> {
@@ -39,5 +41,9 @@ public class Product extends AuditingEntity<Long> {
     //TODO Уточнить корректно ли будет не хранить картинку в БД, а просто ссылку к нему
     @Column(name = "images")
     private String urlToImage;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "product")
+    private List<OrderProduct> orderProducts = new ArrayList<>();
 
 }

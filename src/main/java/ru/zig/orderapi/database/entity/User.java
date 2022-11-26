@@ -2,6 +2,7 @@ package ru.zig.orderapi.database.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.zig.orderapi.database.entity.enums.UserStatus;
@@ -20,6 +21,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name = "users")
 public class User extends AuditingEntity<Long> {
 

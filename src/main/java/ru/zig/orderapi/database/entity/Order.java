@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import ru.zig.orderapi.database.entity.enums.OrderStatus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "orders")
 //TODO настроить аудит энверс
@@ -38,8 +40,8 @@ public class Order extends AuditingEntity<Long> {
     @Column(name = "is_payed")
     private boolean isPayed;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product")
-    private List<Product> orderProducts;
+    @Builder.Default
+    @OneToMany(mappedBy = "order")
+    private List<OrderProduct> orderProducts = new ArrayList<>();
 
 }
