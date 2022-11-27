@@ -9,7 +9,8 @@ import ru.zig.orderapi.database.repository.ProductRepository;
 import ru.zig.orderapi.database.repository.UserRepository;
 import ru.zig.orderapi.dto.OrderCreateDto;
 
-import java.util.*;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
@@ -48,11 +49,9 @@ public class OrderCreateMapper implements Mapper<OrderCreateDto, Order> {
     }
 
     private Set<Product> getProducts(Set<Long> productIds) {
-
-        return Optional.ofNullable(productIds)
-                .flatMap(productRepository::findAllById)
-                .orElse(null);
+        return productRepository.findAllById(productIds)
+                .stream()
+                .collect(Collectors.toSet());
     }
-
 }
 

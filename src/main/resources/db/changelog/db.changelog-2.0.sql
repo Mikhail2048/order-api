@@ -1,7 +1,7 @@
 --liquibase formatted sql
 
 
---changeset dmatveyenka:1
+--changeset zig199:1
 CREATE TABLE IF NOT EXISTS orders_product
 (
     orders_id BIGINT NOT NULL REFERENCES orders (id),
