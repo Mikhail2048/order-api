@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.zig.orderapi.dto.OrderCreateEditDto;
+import ru.zig.orderapi.dto.OrderCreateDto;
 import ru.zig.orderapi.service.OrderService;
 
 import static org.springframework.http.ResponseEntity.noContent;
@@ -18,10 +18,9 @@ public class OrderRestController {
 
     private final OrderService orderService;
 
-
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public Long create(@RequestBody OrderCreateEditDto user) {
+    public Long create(@RequestBody OrderCreateDto user) {
         return orderService.create(user);
     }
 

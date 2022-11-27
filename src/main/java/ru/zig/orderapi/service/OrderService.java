@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.zig.orderapi.database.repository.OrderRepository;
-import ru.zig.orderapi.dto.OrderCreateEditDto;
+import ru.zig.orderapi.dto.OrderCreateDto;
 
 @Service
 @RequiredArgsConstructor
@@ -14,7 +14,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
 
     @Transactional
-    public Long create(OrderCreateEditDto user){
+    public Long create(OrderCreateDto user){
         return 2L;
     }
 

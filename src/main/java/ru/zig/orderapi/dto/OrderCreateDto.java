@@ -8,13 +8,15 @@ import java.util.Set;
 
 @Value
 @FieldNameConstants
-public class OrderCreateEditDto {
+public class OrderCreateDto {
 
     Long userId;
 
     OrderStatus orderStatus;
 
     String arrivingLocation;
+
+    boolean isPayed;
 
     Set<Long> products;
 }

@@ -3,8 +3,7 @@ package ru.zig.orderapi.database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Product (type, historyOfPrices, isAvailable, description, images, feedBacksOfUsers)
@@ -12,6 +11,7 @@ import java.util.List;
 
 @Getter
 @Setter
+//@EqualsAndHashCode(of = {"name"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -43,7 +43,33 @@ public class Product extends AuditingEntity<Long> {
     private String urlToImage;
 
     @Builder.Default
-    @OneToMany(mappedBy = "product")
-    private List<OrderProduct> orderProducts = new ArrayList<>();
+    @ManyToMany(mappedBy = "products")
+    private Set<Order> orders = new HashSet<>();
 
+    @Builder.Default
+    @OneToMany(mappedBy = "product")
+    private List<Feedback> productFeedbacks = new ArrayList<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product product)) return false;
+        return isAvailable == product.isAvailable && id.equals(product.id) && Objects.equals(nameProduct, product.nameProduct) && Objects.equals(price, product.price) && Objects.equals(description, product.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nameProduct, price, isAvailable, description);
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", nameProduct='" + nameProduct + '\'' +
+                ", price=" + price +
+                ", isAvailable=" + isAvailable +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

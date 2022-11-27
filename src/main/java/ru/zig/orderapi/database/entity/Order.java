@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import ru.zig.orderapi.database.entity.enums.OrderStatus;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Order (orderId, userId, orderStatus, arrivingLocation, isPayed, List<Product>, createdAt)
@@ -13,6 +13,7 @@ import java.util.List;
 
 @Getter
 @Setter
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -41,7 +42,11 @@ public class Order extends AuditingEntity<Long> {
     private boolean isPayed;
 
     @Builder.Default
-    @OneToMany(mappedBy = "order")
-    private List<OrderProduct> orderProducts = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "orders_product",
+            joinColumns = @JoinColumn(name = "orders_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private Set<Product> products = new HashSet<>();
 
 }
