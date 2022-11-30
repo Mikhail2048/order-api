@@ -22,7 +22,7 @@ public class OrderRestController {
 
 //    /exists Checking whether the order exists or not
 
-    @GetMapping("/test/{id}")
+    @GetMapping("/order/{id}")
     public boolean exists(@PathVariable("id") Long id) {
         return orderService.existsById(id);
     }
