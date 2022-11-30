@@ -1,0 +1,37 @@
+#db:
+#    username: ${username.value:postgres}
+#    password: odae4Qu
+#    driver: PostgresDriver
+#    url: postgres:5432
+#    hosts: localhost,127.0.0.1
+
+logging:
+    level:
+#        root: DEBUG
+        org:
+#            springframework:
+#                session:
+#                    web: INFO
+#                test: INFO
+            hibernate:
+                SQL: DEBUG
+#                type:
+#                    descriptor:
+#                        sql: TRACE
+
+#app.common.logging:
+#    enabled: true
+#    level: INFO
+
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/order-api?characterEncoding=utf8
+        username: postgres
+        password: odae4Qu
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        properties:
+            hibernate:
+                format_sql: true
+        properties.hibernate:
+            hbm2ddl.auto: validate
