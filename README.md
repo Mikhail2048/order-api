@@ -1,3 +1,7 @@
+//COPYRIGHT
+// license
+//Contributions file
+
 Order-api
 
 The goal of this service is to serve client HTTP requests in relation to orders.
